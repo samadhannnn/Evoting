@@ -1,0 +1,33 @@
+.voterList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Optional: smooth entry animation */
+.voterList > * {
+  animation: fadeIn 0.5s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll support for smaller devices */
+@media screen and (max-width: 480px) {
+  .voterList {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}

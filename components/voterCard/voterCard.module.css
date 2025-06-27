@@ -1,0 +1,345 @@
+/* voterCard.module.css */
+
+.voterContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.voterCard {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.voterCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.voterCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #3b82f6;
+}
+
+.voterCard:hover::before {
+  transform: scaleX(1);
+}
+
+.voterHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.voterImageContainer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.voterImageContainer::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.voterCard:hover .voterImageContainer::after {
+  opacity: 1;
+}
+
+.voterImage {
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border: 2px solid #ffffff;
+}
+
+.voterCard:hover .voterImage {
+  transform: scale(1.05);
+}
+
+.voterInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.voterName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.voterCard:hover .voterName {
+  color: #3b82f6;
+}
+
+.voterID {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+.addressSection {
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border-left: 3px solid #3b82f6;
+  transition: all 0.3s ease;
+}
+
+.voterCard:hover .addressSection {
+  background: #eff6ff;
+  border-left-color: #8b5cf6;
+}
+
+.label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.address {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.votingStatusBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse 2s infinite;
+}
+
+.votingStatusBadge.voted {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.votingStatusBadge.notVoted {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.voteButton {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.voteButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.voteButton:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.voteButton:hover::before {
+  left: 100%;
+}
+
+.voteButton:active {
+  transform: translateY(0);
+}
+
+.voteButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.voteButton:disabled::before {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .voterContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .voterCard {
+    padding: 1rem;
+  }
+  
+  .voterHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .voterName {
+    font-size: 1.125rem;
+  }
+  
+  .voterImage {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .voterContainer {
+    padding: 0.25rem;
+  }
+  
+  .voterCard {
+    padding: 0.75rem;
+  }
+  
+  .votingStatusBadge {
+    position: static;
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.voterCard {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Loading State */
+.voterCard.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.voterCard.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .voterCard {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+  
+  .voterName {
+    color: #f1f5f9;
+  }
+  
+  .voterCard:hover .voterName {
+    color: #60a5fa;
+  }
+  
+  .voterID {
+    color: #94a3b8;
+  }
+  
+  .addressSection {
+    background: #0f172a;
+    border-left-color: #60a5fa;
+  }
+  
+  .voterCard:hover .addressSection {
+    background: #1e293b;
+  }
+  
+  .label {
+    color: #cbd5e1;
+  }
+  
+  .address {
+    color: #94a3b8;
+  }
+}

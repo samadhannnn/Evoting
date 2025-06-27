@@ -1,0 +1,191 @@
+/* Input Component Styles */
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 16px;
+}
+
+.input__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+}
+
+.input__box {
+  position: relative;
+  width: 100%;
+}
+
+.input__box__form {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #374151;
+  background-color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  outline: none;
+  line-height: 1.5;
+}
+
+.input__box__form::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+  opacity: 1;
+}
+
+/* Focus State */
+.input__box__form:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: #ffffff;
+}
+
+/* Hover State */
+.input__box__form:hover:not(:focus) {
+  border-color: #d1d5db;
+}
+
+/* Error State */
+.input__box__form:invalid {
+  border-color: #ef4444;
+}
+
+.input__box__form:invalid:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Disabled State */
+.input__box__form:disabled {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.input__box__form:disabled::placeholder {
+  color: #d1d5db;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .input__title {
+    color: #f3f4f6;
+  }
+  
+  .input__box__form {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f3f4f6;
+  }
+  
+  .input__box__form::placeholder {
+    color: #6b7280;
+  }
+  
+  .input__box__form:focus {
+    background-color: #1f2937;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  .input__box__form:hover:not(:focus) {
+    border-color: #4b5563;
+  }
+  
+  .input__box__form:disabled {
+    background-color: #111827;
+    border-color: #374151;
+    color: #6b7280;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .input {
+    max-width: 100%;
+  }
+  
+  .input__box__form {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Animation for smooth transitions */
+@keyframes inputFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input {
+  animation: inputFadeIn 0.3s ease-out;
+}
+
+/* Specific input type styles */
+.input__box__form[type="email"],
+.input__box__form[type="url"] {
+  font-family: monospace, sans-serif;
+}
+
+.input__box__form[type="number"] {
+  text-align: right;
+}
+
+.input__box__form[type="search"] {
+  padding-right: 40px;
+}
+
+/* Loading state (optional) */
+.input__box--loading .input__box__form {
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Success state (optional) */
+.input__box__form--success {
+  border-color: #10b981;
+}
+
+.input__box__form--success:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Warning state (optional) */
+.input__box__form--warning {
+  border-color: #f59e0b;
+}
+
+.input__box__form--warning:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
