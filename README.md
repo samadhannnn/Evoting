@@ -1,4 +1,4 @@
-# Real Estate NFT DApp
+# E-Voting App
 
 ## Technology Stack & Tools
 
